@@ -86,3 +86,61 @@ Map.addLayer(
 );
 
 Map.centerObject(lokojaBasin, 6);
+
+
+// ======================================================
+// STEP 5: SAVE THE UPSTREAM CATCHMENT NETWORK
+// ======================================================
+
+// Remove duplicate basin IDs, if any
+var uniqueUpstream = allUpstream.distinct(['HYBAS_ID']);
+
+// Retrieve Lokoja target basin
+var lokojaBasin = basins.filter(
+  ee.Filter.eq('HYBAS_ID', 1060909890)
+).map(function(feature) {
+  return feature.set({
+    upstream_level: 0,
+    network_role: 'Lokoja target basin'
+  });
+});
+
+// Label upstream features
+uniqueUpstream = uniqueUpstream.map(function(feature) {
+  return feature.set(
+    'network_role',
+    'Upstream contributing basin'
+  );
+});
+
+// Combine target basin and upstream network
+var completeNetwork = uniqueUpstream.merge(lokojaBasin);
+
+print('Unique upstream basins:', uniqueUpstream.size());
+print('Complete network including Lokoja:', completeNetwork.size());
+
+// Export complete network with geometries
+Export.table.toDrive({
+  collection: completeNetwork,
+  description: 'NigeriaFloodWatch_HydroBASINS_Upstream_Network',
+  folder: 'NigeriaFloodWatch',
+  fileNamePrefix: 'hydrobasins_upstream_network_lokoja',
+  fileFormat: 'GeoJSON'
+});
+
+// Export tabular attributes separately
+Export.table.toDrive({
+  collection: completeNetwork,
+  description: 'NigeriaFloodWatch_HydroBASINS_Attributes',
+  folder: 'NigeriaFloodWatch',
+  fileNamePrefix: 'hydrobasins_upstream_attributes_lokoja',
+  selectors: [
+    'HYBAS_ID',
+    'NEXT_DOWN',
+    'MAIN_BAS',
+    'UP_AREA',
+    'upstream_level',
+    'network_role'
+  ],
+  fileFormat: 'CSV'
+});
