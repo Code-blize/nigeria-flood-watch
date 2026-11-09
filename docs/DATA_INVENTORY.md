@@ -88,6 +88,40 @@ These findings are exploratory. The Niger and Benue contributing catchments have
 - Compare catchment relationships with river networks and GloFAS locations.
 - Assess whether Level 6 provides sufficient spatial detail.
 
+
+### Updated HydroBASINS exploration — 9 November 2026
+
+**Target basin:** 1060909890  
+**HydroBASINS level:** 6  
+**Access method:** Google Earth Engine
+
+#### Upstream tracing results
+
+A recursive upstream search using the `NEXT_DOWN` attribute was performed against the HydroBASINS Level 6 collection.
+
+| Metric | Result |
+|---|---:|
+| Immediate upstream basins | 2 |
+| Total upstream basin features | 255 |
+| Last generation containing basins | 39 |
+| First empty generation | 40 |
+| Search limit | 50 generations |
+
+The search returned no additional upstream features from generation 40 onwards.
+
+The 255 discovered upstream features have been exported as GeoJSON and CSV, subject to successful completion of the Earth Engine export tasks.
+
+**Interpretation:** The results establish a connected upstream network according to HydroBASINS topology. Separate identification of Niger and Benue tributary branches remains pending.
+
+**Next steps:**
+1. Verify the uniqueness of basin identifiers.
+2. Visualise the complete 255-feature network.
+3. Identify the Niger and Benue branches.
+4. Compare the network with river-network and GloFAS data.
+5. Select suitable hydrological discharge locations for the Lokoja pilot.
+
+
+
 ## 4. Other candidate datasets
 
 | Dataset | Provider | Intended application | Status |
