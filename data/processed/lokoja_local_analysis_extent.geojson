@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "lokoja_local_analysis_extent",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "emsr_id": "EMSR314", "glide_no": "Not Applicable", "area_id": "02", "locality": "Lokoja", "map_type": "Delineation", "study_area": "Lokoja local analysis extent", "boundary_type": "Emergency mapping area of interest", "source": "Copernicus EMSR314_02", "status": "Provisional pilot analysis boundary", "area_km2": 947.54056559191065 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 7.004946248000068, 7.728465796000023 ], [ 6.695891703000029, 7.728465796000022 ], [ 6.695891703000029, 7.979691750000029 ], [ 7.004946248000067, 7.979691750000028 ], [ 7.004946248000068, 7.728465796000023 ] ] ] } }
+]
+}

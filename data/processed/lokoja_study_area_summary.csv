@@ -1,0 +1,4 @@
+study_area,dataset,area_km2,status
+Administrative,lokoja_lga_boundary.geojson,3181.1678496039654,Finalised
+Local analysis extent,lokoja_local_analysis_extent.geojson,947.5405655919106,Provisional
+Hydrological,hydrobasins_combined_upstream_network_lokoja.geojson,,297-feature candidate network verified
