@@ -1,0 +1,2 @@
+system:index,aspect_band,aspect_units,dataset,elevation_band,elevation_units,processing,product,provider,sample_area,slope_band,slope_units,source,spatial_resolution_m,.geo
+0,aspect,degrees,USGS/SRTMGL1_003,elevation,metres,"Elevation, slope and aspect",NASA SRTM V3 / SRTM Plus,NASA / USGS / JPL-Caltech,Lokoja 20 km buffer,slope,degrees,Google Earth Engine,30,"{""type"":""MultiPoint"",""coordinates"":[]}"

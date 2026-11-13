@@ -1,0 +1,2 @@
+system:index,aspect_degrees_max,aspect_degrees_mean,aspect_degrees_min,aspect_degrees_stdDev,dataset,elevation_m_max,elevation_m_mean,elevation_m_min,elevation_m_stdDev,sample_area,slope_degrees_max,slope_degrees_mean,slope_degrees_min,slope_degrees_stdDev,spatial_resolution_m,.geo
+0,359,160.64826666833193,0,108.48040896694809,USGS/SRTMGL1_003,547,140.42155207250323,-38,100.84895660288441,Lokoja 20 km buffer,62,5.3941085377337465,0,5.713065980656755,30,"{""type"":""MultiPoint"",""coordinates"":[]}"
