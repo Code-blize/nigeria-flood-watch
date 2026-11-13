@@ -112,36 +112,49 @@ The floodplain analysis area must be evidence-derived. It may use a combination 
 
 A fixed-radius buffer around Lokoja, an arbitrary low-elevation threshold, or the full LGA polygon is not sufficient on its own to define the floodplain. The final boundary and inclusion rules belong to the Phase 1 study-area task and must be recorded with the evidence used.
 
-### 6.3 Hydrological study area — upstream Niger and Benue contributing catchments
+### 6.3 Hydrological Study Area
 
-Purpose:
+The hydrological study area is defined using a combined upstream catchment network derived from HydroBASINS (WWF HydroSHEDS v1). The network captures two candidate upstream branches associated with the Lokoja study location.
 
-- Represent the upstream drainage areas and river reaches whose flows can influence the Niger–Benue confluence around Lokoja.
-- Support rainfall aggregation and hydrological forecast extraction.
-- Identify relevant river reaches, basin outlets and GloFAS grid cells.
+#### 6.3.1 Network composition
 
-The hydrological area must be delineated from a defensible combination of basin topology, river-network connectivity, geographic position and authoritative hydrological evidence. It is not equivalent to Lokoja LGA or the local floodplain.
+The combined network contains **297 unique HydroBASINS features**:
 
-Existing HydroBASINS work is exploratory. The 255 upstream features traced from candidate target basin `1060909890` (256 features including that target) represent one traced network, not a confirmed complete Niger–Benue contributing network. Candidate basin `1060909900` and the apparent separate branch must be resolved. HydroSHEDS backbone labels and historical-average discharge attributes must not be accepted as definitive local river names or live discharge measurements without independent verification.
+| Component | Target basin | Total features, including target | Upstream contributing features |
+|---|---:|---:|---:|
+| Target A | 1060909890 | 256 | 255 |
+| Target B | 1060909900 | 41 | 40 |
+| **Combined network** | **Two targets** | **297** | **295** |
 
-### Updated HydroBASINS evidence — November 2026
+The two branches have no shared basin IDs. Both connect downstream to basin `1060022420`. The combined network contains generations 0–39, with no duplicate basin IDs, invalid geometries, or downstream links outside the exported network.
 
-Two candidate Level 6 target basins were traced independently using the `NEXT_DOWN` relationship:
+#### 6.3.2 Hydrological consistency
 
-| Metric | Target A | Target B |
-|---|---:|---:|
-| Target basin ID | 1060909890 | 1060909900 |
-| Total features, including target | 256 | 41 |
-| Upstream contributing features | 255 | 40 |
+The combined upstream cumulative area for the two target basins is approximately **2,069,192.6 km²**. Including the downstream basin's reported sub-area of 29,461.2 km² gives approximately **2,098,653.8 km²**, compared with its reported upstream area of 2,098,663.8 km². The difference is approximately 10 km² (about 0.0005%).
 
-The combined candidate network contains **297 unique basin features**, with no shared basin IDs. Both branches drain towards the common downstream basin `1060022420`. The exported network contains 295 contributing basins and two target basins.
+This close agreement provides an internal consistency check for the exported basin network. It does not independently establish the real-world river identity or validate hydrological flow direction.
 
-Structural checks found no duplicate basin identifiers, invalid basin geometries or downstream links outside the exported network.
+#### 6.3.3 Interpretation and limitations
 
-The two branches are structurally distinct candidate upstream networks associated with the Lokoja downstream system. Their identities as the Niger and Benue contributing catchments have not yet been independently confirmed through authoritative river-network topology or hydrological observations.
+- Target A and Target B are retained as neutral identifiers. Their identities must not be labelled as the Niger and Benue branches until independently verified using authoritative river-network information.
+- HydroBASINS features represent drainage catchments, not river-channel geometries.
+- The combined network is a broad upstream hydrological context for investigating potential upstream influences on Lokoja. It is not the local floodplain boundary.
+- Its large spatial extent does not imply that every included catchment contributes equally or immediately to flooding at Lokoja.
+- Further hydrological analysis should consider travel time, rainfall distribution, river discharge, connectivity and the temporal relationship between upstream conditions and observed flooding.
 
-The combined network is therefore retained as a **candidate upstream hydrological study area**, pending river-identity and hydrological relevance validation.
+#### 6.3.4 Retained outputs
 
+The following processed files document the combined network:
+
+- `data/processed/hydrobasins_combined_upstream_network_lokoja.geojson`
+- `data/processed/hydrobasins_combined_upstream_attributes_lokoja.csv`
+
+The earlier single-branch outputs are retained for comparison:
+
+- `data/processed/hydrobasins_upstream_network_lokoja.geojson`
+- `data/processed/hydrobasins_upstream_attributes_lokoja.csv`
+
+The combined network is the current working hydrological study-area definition. Any future changes must be documented with the source dataset version, basin identifiers, processing method and validation results.
 ### 6.4 Boundary decision record
 
 For each study-area geometry, record:
