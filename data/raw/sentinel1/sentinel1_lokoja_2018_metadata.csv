@@ -1,0 +1,2 @@
+system:index,acquisition_date,dataset,end_date,instrument_mode,orbit_pass,platform,polarisation,product_type,relative_orbit,resolution_meters,sample_area,source,start_date,system_index,.geo
+0,2018-09-04 17:45:42,COPERNICUS/S1_GRD,2018-10-01,IW,ASCENDING,A,"VV,VH",GRD,30.0,10.0,Lokoja 20 km buffer,Google Earth Engine COPERNICUS/S1_GRD,2018-09-01,S1A_IW_GRDH_1SDV_20180904T174542_20180904T174607_023552_0290A2_A262,"{""type"":""MultiPoint"",""coordinates"":[]}"
