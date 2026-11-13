@@ -1,0 +1,2 @@
+system:index,dataset,end_date_exclusive,expected_days,monthly_output_units,product,rainfall_band,rainfall_units,sample_area,source,spatial_resolution_m,start_date,temporal_basis,version,.geo
+0,UCSB-CHC/CHIRPS/V3/DAILY_RNL,2018-10-01,30,mm/monthly accumulation,DAILY_RNL,precipitation,mm/day,Lokoja 20 km buffer,"Climate Hazards Center, UC Santa Barbara",5566,2018-09-01,Daily estimates derived using ERA5,CHIRPS v3,"{""type"":""MultiPoint"",""coordinates"":[]}"
