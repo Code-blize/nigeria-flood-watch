@@ -124,6 +124,24 @@ The hydrological area must be delineated from a defensible combination of basin 
 
 Existing HydroBASINS work is exploratory. The 255 upstream features traced from candidate target basin `1060909890` (256 features including that target) represent one traced network, not a confirmed complete Niger–Benue contributing network. Candidate basin `1060909900` and the apparent separate branch must be resolved. HydroSHEDS backbone labels and historical-average discharge attributes must not be accepted as definitive local river names or live discharge measurements without independent verification.
 
+### Updated HydroBASINS evidence — November 2026
+
+Two candidate Level 6 target basins were traced independently using the `NEXT_DOWN` relationship:
+
+| Metric | Target A | Target B |
+|---|---:|---:|
+| Target basin ID | 1060909890 | 1060909900 |
+| Total features, including target | 256 | 41 |
+| Upstream contributing features | 255 | 40 |
+
+The combined candidate network contains **297 unique basin features**, with no shared basin IDs. Both branches drain towards the common downstream basin `1060022420`. The exported network contains 295 contributing basins and two target basins.
+
+Structural checks found no duplicate basin identifiers, invalid basin geometries or downstream links outside the exported network.
+
+The two branches are structurally distinct candidate upstream networks associated with the Lokoja downstream system. Their identities as the Niger and Benue contributing catchments have not yet been independently confirmed through authoritative river-network topology or hydrological observations.
+
+The combined network is therefore retained as a **candidate upstream hydrological study area**, pending river-identity and hydrological relevance validation.
+
 ### 6.4 Boundary decision record
 
 For each study-area geometry, record:
@@ -255,6 +273,33 @@ The data inventory and source/licence register remain the authoritative place fo
 | Flood event evidence | NIHSA, NIWA, NEMA, UNOSAT and other documented sources | Event chronology, reports, flood footprints and independent validation | Availability, accuracy, licence and spatial/temporal specificity are not yet established |
 
 The exact dataset version, coverage, access method, file format and licence will be verified in the Phase 1 data inventory and licence register before production use.
+
+
+| Dataset | Spatial / temporal characteristics | Licence / access | Inventory status |
+| :--- | :--- | :--- | :--- |
+| **UN SALB Nigeria** | Administrative polygons; temporal validity 2000–latest listed update, 8 Aug 2024 | Non-commercial use only; geometry/content changes require contributor consent | Acquired; boundary QA completed |
+| **HydroBASINS v1, Level 6** | Global nested sub-basins; derived from 15-arc-second HydroSHEDS core data | Free scientific, educational and commercial use, subject to HydroSHEDS terms | Acquired; 297-feature candidate network QA completed |
+| **Sentinel-1 GRD** | 10, 25 or 40 m product resolutions; archive begins October 2014; acquisition-dependent revisit | Copernicus Sentinel Data Terms | Initial GEE exploration completed; acquisition workflow needs consolidation |
+| **CHIRPS v3 daily** | 0.05°; daily; 1981–near present | Public domain | Sample acquisition previously explored; exact exported sample and QA need recording |
+| **SRTM** | 1 arc-second global product, approximately 30 m at the equator | NASA/USGS data access; retain source acknowledgement | Sample acquisition previously explored; exact raster and QA need recording |
+| **OpenStreetMap** | Vector features; update frequency and completeness vary by location | ODbL; attribution and share-alike obligations apply | Sample data previously explored; extract date and download method need recording |
+| **Copernicus EMSR314_02** | Event-specific September 2018 flood mapping; vector layers and AOI | Free reuse subject to CEMS terms and source attribution | Acquired; flood geometry QA and LGA clipping completed |
+| **GloFAS** | Historical daily discharge; GloFAS v4 historical coverage from 1979 to near present, 0.05° | Copernicus Climate Data Store access and applicable terms | Access and relevant Lokoja grid cells still need confirmation |
+| **NIHSA observations** | River-level and discharge data may be available by station and period | Request-based; access, timing and fees depend on data | Request not yet completed |
+| **NIWA / NEMA / UNOSAT** | Historical evidence and records vary by source and event | Source-specific terms | Further source-level verification required |
+
+### Sources
+* **UN SALB terms and Nigeria metadata:** [salb.un.org](https://un.org) (+1)
+* **HydroBASINS documentation:** [hydrosheds.org](https://hydrosheds.org) (+1)
+* **Sentinel-1 and CHIRPS catalogues:** [developers.google.com](https://google.com) (+2)
+* **SRTM product guide:** [earthdata.nasa.gov](https://nasa.gov)
+* **OSM licence:** OpenStreetMap
+* **Copernicus EMS terms:** Copernicus EMS On Demand Mapping
+* **GloFAS technical documentation:** ECMWF Confluence Wiki (+1)
+* **NIHSA request process:** NIHSA
+
+> **A significant licence issue:** UN SALB's published terms restrict SALB data to non-commercial use and prohibit geometry/content changes without contributor consent ([salb.un.org](https://un.org)). We can use the extracted boundary for this research subject to those terms, but we must review this before distributing a commercial **NigeriaFloodWatch** product based on that boundary.
+
 
 ## 10. Model-development strategy
 
