@@ -72,13 +72,6 @@ print("AOI bounds:", aoi.bounds)
 feature_groups = {
     "roads": {
         "highway": True
-    },
-    "buildings": {
-        "building": True
-    },
-    "waterways": {
-        "waterway": True,
-        "natural": ["water", "wetland"]
     }
 }
 
