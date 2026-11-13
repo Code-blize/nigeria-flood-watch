@@ -37,6 +37,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 ox.settings.use_cache = True
 ox.settings.log_console = True
 ox.settings.timeout = 300
+ox.settings.overpass_url = "https://overpass.kumi.systems/api"
 
 # --------------------------------------------------
 # 2. LOAD LOKOJA LGA BOUNDARY
