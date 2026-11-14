@@ -1,0 +1,38 @@
+{
+    "project": "NigeriaFloodWatch",
+    "dataset": "GloFAS Historical",
+    "date": "2018-09-15",
+    "source_file": "data/raw/glofas/extracted/data.grib",
+    "grib_metadata": {
+        "edition": 2,
+        "discipline": 1,
+        "shortName": "avg_dis",
+        "name": "Time-mean discharge from rivers or streams",
+        "units": "m**3 s**-1",
+        "dataDate": 20180915,
+        "dataTime": 0,
+        "Ni": 7,
+        "Nj": 6,
+        "numberOfValues": 42,
+        "gridType": "regular_ll",
+        "latitudeOfFirstGridPointInDegrees": 7.925,
+        "longitudeOfFirstGridPointInDegrees": 6.625,
+        "latitudeOfLastGridPointInDegrees": 7.675,
+        "longitudeOfLastGridPointInDegrees": 6.925
+    },
+    "statistics": {
+        "minimum": 0.0,
+        "maximum": 19711.78125,
+        "mean": 3539.6640625,
+        "median": 0.0390625,
+        "standard_deviation": 6417.234272341608,
+        "valid_cells": 42,
+        "missing_cells": 0
+    },
+    "coordinate_extent": {
+        "minimum_latitude": 7.675,
+        "maximum_latitude": 7.925,
+        "minimum_longitude": 6.625,
+        "maximum_longitude": 6.925
+    }
+}

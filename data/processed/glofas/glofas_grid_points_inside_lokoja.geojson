@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "glofas_grid_points_inside_lokoja",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "cell_id": 1, "latitude": 7.925, "longitude": 6.625, "discharge_m3_s": 0.015625, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.625, 7.925 ] } },
+{ "type": "Feature", "properties": { "cell_id": 2, "latitude": 7.925, "longitude": 6.675, "discharge_m3_s": 0.015625, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.675, 7.925 ] } },
+{ "type": "Feature", "properties": { "cell_id": 3, "latitude": 7.925, "longitude": 6.725, "discharge_m3_s": 0.0, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.725, 7.925 ] } },
+{ "type": "Feature", "properties": { "cell_id": 4, "latitude": 7.925, "longitude": 6.775, "discharge_m3_s": 10829.046875, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.775, 7.925 ] } },
+{ "type": "Feature", "properties": { "cell_id": 8, "latitude": 7.875, "longitude": 6.625, "discharge_m3_s": 0.0, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.625, 7.875 ] } },
+{ "type": "Feature", "properties": { "cell_id": 9, "latitude": 7.875, "longitude": 6.675, "discharge_m3_s": 0.03125, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.675, 7.875 ] } },
+{ "type": "Feature", "properties": { "cell_id": 10, "latitude": 7.875, "longitude": 6.725, "discharge_m3_s": 0.15625, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.725, 7.875 ] } },
+{ "type": "Feature", "properties": { "cell_id": 11, "latitude": 7.875, "longitude": 6.775, "discharge_m3_s": 10827.109375, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.775, 7.875 ] } },
+{ "type": "Feature", "properties": { "cell_id": 17, "latitude": 7.825, "longitude": 6.725, "discharge_m3_s": 0.109375, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.725, 7.825 ] } },
+{ "type": "Feature", "properties": { "cell_id": 24, "latitude": 7.775, "longitude": 6.725, "discharge_m3_s": 10837.515625, "valid": true, "inside_lokoja_lga": true }, "geometry": { "type": "Point", "coordinates": [ 6.725, 7.775 ] } }
+]
+}
