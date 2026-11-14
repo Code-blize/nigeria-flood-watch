@@ -1,0 +1,71 @@
+{
+    "dataset": "GloFAS historical v4.0",
+    "variable": "avg_dis",
+    "units": "m3/s",
+    "period": "2015-01-01 to 2020-12-31",
+    "candidate_cells": [
+        4,
+        11,
+        14,
+        18,
+        19,
+        25,
+        32
+    ],
+    "total_records": 2192,
+    "expected_records": 2192,
+    "yearly_checks": [
+        {
+            "year": 2015,
+            "grib_messages": 365,
+            "unique_dates": 365,
+            "expected_dates": 365,
+            "status": "PASS"
+        },
+        {
+            "year": 2016,
+            "grib_messages": 366,
+            "unique_dates": 366,
+            "expected_dates": 366,
+            "status": "PASS"
+        },
+        {
+            "year": 2017,
+            "grib_messages": 365,
+            "unique_dates": 365,
+            "expected_dates": 365,
+            "status": "PASS"
+        },
+        {
+            "year": 2018,
+            "grib_messages": 365,
+            "unique_dates": 365,
+            "expected_dates": 365,
+            "status": "PASS"
+        },
+        {
+            "year": 2019,
+            "grib_messages": 365,
+            "unique_dates": 365,
+            "expected_dates": 365,
+            "status": "PASS"
+        },
+        {
+            "year": 2020,
+            "grib_messages": 366,
+            "unique_dates": 366,
+            "expected_dates": 366,
+            "status": "PASS"
+        }
+    ],
+    "missing_values": {
+        "cell_4": 0,
+        "cell_11": 0,
+        "cell_14": 0,
+        "cell_18": 0,
+        "cell_19": 0,
+        "cell_25": 0,
+        "cell_32": 0
+    },
+    "status": "PASS"
+}
