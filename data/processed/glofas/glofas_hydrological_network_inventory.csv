@@ -1,0 +1,8 @@
+cell,latitude,longitude,group,inside_lokoja_lga,nearest_named_hydrography,nearest_named_hydrography_distance_m
+cell_4,7.925,6.775,Group A,True,Niger,441.9606265102592
+cell_11,7.875,6.775,Group A,True,Niger,0.0
+cell_18,7.825,6.775,Group A,False,Niger,71.46091126577166
+cell_14,7.875,6.925,Group B,False,Benue,140.71028007108492
+cell_19,7.825,6.825,Group B,False,Benue,832.5574170476319
+cell_25,7.775,6.775,Group C,False,Benue,949.522478531157
+cell_32,7.725,6.775,Group C,False,Niger,1714.5967294550524
