@@ -1,0 +1,16 @@
+{
+  "time_ms": 14,
+  "feature_count": 500,
+  "tolerance_m": 1.0,
+  "layer": "roads",
+  "elapsed_ms": 14,
+  "method": "postgis_sql",
+  "data_snapshot": "2026-10-26",
+  "tier": "free",
+  "quota": {
+    "guest": true,
+    "used": 1,
+    "limit": 10,
+    "remaining": 9
+  }
+}
