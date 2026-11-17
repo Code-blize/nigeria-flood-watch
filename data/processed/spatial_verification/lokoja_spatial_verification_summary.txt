@@ -1,0 +1,25 @@
+LOKOJA SPATIAL VERIFICATION SUMMARY
+============================================================
+LGA features: 1
+Local analysis extent features: 1
+2018 flood features: 54
+HydroBASINS features: 297
+Hydrography polygon features: 108
+Hydrography line features: 22
+Named Niger polygons: 1
+Named Benue polygons: 3
+GloFAS candidate cells: 7
+Cells intersecting LGA: 2
+Cells intersecting local AOI: 6
+Cells intersecting 2018 flood footprint: 1
+
+IMPORTANT LIMITATIONS
+- HydroBASINS polygons represent catchments, not river channels.
+- The local analysis extent is provisional and event-derived.
+- Hydrography line names are Unknown in the source data.
+- Spatial proximity does not establish GloFAS river attribution.
+- GloFAS grid cells are modelled estimates, not in-situ gauges.
+
+Regional map: data/figures/lokoja_regional_hydrological_study_area.png
+Local map: data/figures/lokoja_local_study_area_detail.png
+Cell inventory: data/processed/spatial_verification/lokoja_spatial_verification_inventory.csv

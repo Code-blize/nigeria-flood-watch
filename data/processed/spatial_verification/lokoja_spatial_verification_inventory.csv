@@ -1,0 +1,8 @@
+cell,group,latitude,longitude,inside_lga,inside_local_aoi,intersects_2018_flood,intersecting_named_hydrography,nearest_named_hydrography,nearest_hydrography_distance_m,intersecting_hydrobasin_count,intersecting_hydrobasin_ids
+cell_4,Group A,7.925,6.775,True,True,True,None,Niger,441.9606265102592,1,1060909890
+cell_11,Group A,7.875,6.775,True,True,False,Niger,Niger,0.0,1,1060909890
+cell_18,Group A,7.825,6.775,False,True,False,None,Niger,71.46091126577166,1,1060909890
+cell_14,Group B,7.875,6.925,False,True,False,None,Benue,140.71028007108492,1,1060909900
+cell_19,Group B,7.825,6.825,False,True,False,None,Benue,832.5574170476319,1,1060909900
+cell_25,Group C,7.775,6.775,False,True,False,None,Benue,949.522478531157,0,
+cell_32,Group C,7.725,6.775,False,False,False,None,Niger,1714.5967294550524,0,
