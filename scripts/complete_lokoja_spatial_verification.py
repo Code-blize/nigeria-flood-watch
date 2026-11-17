@@ -326,7 +326,8 @@ ax.add_patch(
 
 # Add a Lokoja inset so the local study area remains legible
 # at the regional network scale.
-inset = fig.add_axes([0.66, 0.12, 0.27, 0.27])
+# Upper-left open space avoids covering the Lokoja marker or basin outlets.
+inset = fig.add_axes([0.12, 0.68, 0.23, 0.23])
 basins_local_inset = gpd.clip(
     basins,
     gpd.GeoDataFrame(
@@ -546,7 +547,14 @@ ax.set_title(
 ax.set_xlabel("Longitude")
 ax.set_ylabel("Latitude")
 ax.grid(alpha=0.3, linestyle="--")
-ax.legend(loc="best", fontsize=8)
+# Place the detailed legend outside the map, not over the AOI or cells.
+ax.legend(
+    loc="upper left",
+    bbox_to_anchor=(1.02, 1.0),
+    borderaxespad=0,
+    fontsize=8,
+    frameon=True
+)
 ax.set_aspect("equal", adjustable="box")
 
 fig.text(
