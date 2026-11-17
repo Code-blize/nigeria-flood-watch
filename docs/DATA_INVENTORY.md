@@ -1,9 +1,9 @@
 # NigeriaFloodWatch — Data Inventory
 
-**Document version:** 0.2  
+**Document version:** 0.3  
 **Project:** NigeriaFloodWatch  
 **Pilot study area:** Lokoja, Kogi State, Nigeria  
-**Last updated:** 13 November 2026  
+**Last updated:** 17 November 2026  
 **Status:** Phase 1 working inventory
 
 ---
@@ -185,6 +185,60 @@ The 297-feature network is a candidate combined upstream network. Structural con
 River identity and hydrological relevance must be checked against authoritative river-network and hydrological evidence before the branches are assigned definitive names.
 
 HydroBASINS is a basin-boundary dataset, not a detailed local river-channel dataset.
+
+
+
+### 2.4 Spatial verification of GloFAS candidate cells
+
+Seven candidate GloFAS historical grid locations were compared with the Lokoja LGA, the provisional Copernicus local analysis extent, the September 2018 Copernicus flood footprint, named Copernicus hydrography polygons and the combined 297-feature HydroBASINS network.
+
+**Verified point-intersection results**
+
+| Cell | Statistical group | Lokoja LGA | Local analysis extent | 2018 flood footprint | Intersecting target HydroBASINS ID |
+|---|---|---|---|---|---|
+| cell_4 | A | Yes | Yes | Yes | 1060909890 |
+| cell_11 | A | Yes | Yes | No | 1060909890 |
+| cell_18 | A | No | Yes | No | 1060909890 |
+| cell_14 | B | No | Yes | No | 1060909900 |
+| cell_19 | B | No | Yes | No | 1060909900 |
+| cell_25 | C | No | Yes | No | None |
+| cell_32 | C | No | No | No | None |
+
+Summary: 2/7 points intersect Lokoja LGA; 6/7 intersect the local analysis extent; 1/7 intersects the 2018 flood footprint; and 5/7 intersect one of the two target HydroBASINS polygons.
+
+**Named hydrography proximity**
+
+| Cell | Nearest named polygon | Distance (m) | Intersects named polygon |
+|---|---|---:|---|
+| cell_4 | Niger | 441.96 | No |
+| cell_11 | Niger | 0.00 | Yes |
+| cell_18 | Niger | 71.46 | No |
+| cell_14 | Benue | 140.71 | No |
+| cell_19 | Benue | 832.56 | No |
+| cell_25 | Benue | 949.52 | No |
+| cell_32 | Niger | 1,714.60 | No |
+
+Distances were calculated in EPSG:32632. The four named polygons comprise one feature named Niger and three named Benue. The separate Copernicus hydrography line layer contains 22 features, all with the source name value Unknown.
+
+**Interpretation and limitations**
+
+- The statistical groups (A, B and C) were derived from similarity/redundancy analysis of the seven candidate historical discharge series; they are not official GloFAS river identifiers.
+- Nearest named polygon is a proximity result, not proof of river attribution. Only cell_11 intersects a named river polygon.
+- Cells 4, 11 and 18 intersect target HydroBASINS polygon 1060909890; cells 14 and 19 intersect 1060909900. Cells 25 and 32 do not intersect any polygon in the exported 297-feature network at their point locations.
+- A point not intersecting the exported candidate network does not prove that it lies outside the wider hydrological drainage system.
+- HydroBASINS polygons are catchment boundaries, not river-channel geometries. Their point intersections do not establish upstream/downstream connectivity.
+- GloFAS discharge values are modelled grid estimates, not in-situ gauge observations.
+- The local analysis extent is provisional and event-derived; the 2018 flood footprint is specific to the September 2018 event and is not a permanent floodplain boundary.
+
+**Retained outputs and workflow**
+
+- Spatial inventory: `data/processed/spatial_verification/lokoja_spatial_verification_inventory.csv`
+- Summary: `data/processed/spatial_verification/lokoja_spatial_verification_summary.txt`
+- Regional map: `data/figures/lokoja_regional_hydrological_study_area.png`
+- Local map: `data/figures/lokoja_local_study_area_detail.png`
+- Reproducible script: `scripts/complete_lokoja_spatial_verification.py`
+
+The local map's display window (6.70–7.05°E, 7.65–8.05°N) is used only to frame the figure. It does not alter the source local analysis extent.
 
 ## 3. Environmental and hydrometeorological datasets
 
