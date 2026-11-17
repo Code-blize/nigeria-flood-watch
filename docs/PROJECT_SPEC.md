@@ -1,9 +1,9 @@
 # NigeriaFloodWatch — Project Specification
 
 **Document:** Project specification  
-**Version:** 1.0 (Phase 1 baseline)  
+**Version:** 1.1 (Phase 1 spatial verification update)  
 **Status:** Working baseline for implementation and research planning  
-**Last updated:** 11 November 2026  
+**Last updated:** 17 November 2026  
 **Pilot location:** Lokoja, Kogi State, Nigeria  
 **Initial hazard focus:** Riverine flooding associated with the Niger–Benue system  
 **Intended forecast horizon:** Up to 72 hours
@@ -166,6 +166,40 @@ For each study-area geometry, record:
 - Date created and software/script version.
 - Quality checks and known uncertainties.
 - Whether the geometry is provisional or approved for analysis.
+
+
+
+### 6.5 Local spatial verification and GloFAS candidate locations
+
+A spatial verification workflow was run using the Lokoja LGA boundary, the Copernicus EMSR314_02 local analysis extent and September 2018 flood footprint, the 297-feature combined HydroBASINS network, Copernicus hydrography polygons and lines, and seven candidate GloFAS historical grid locations. All input layers were read in EPSG:4326. Point-to-hydrography distances were calculated after reprojection to EPSG:32632.
+
+The seven candidate GloFAS cells were grouped from the 2015–2020 discharge-series redundancy analysis. Their point locations and verified spatial relationships are:
+
+| Cell | Statistical group | Intersects Lokoja LGA | Intersects local analysis extent | Intersects 2018 flood footprint | Intersecting target HydroBASINS ID |
+|---|---|---:|---:|---:|---|
+| cell_4 | A | Yes | Yes | Yes | 1060909890 |
+| cell_11 | A | Yes | Yes | No | 1060909890 |
+| cell_18 | A | No | Yes | No | 1060909890 |
+| cell_14 | B | No | Yes | No | 1060909900 |
+| cell_19 | B | No | Yes | No | 1060909900 |
+| cell_25 | C | No | Yes | No | None |
+| cell_32 | C | No | No | No | None |
+
+In total, two candidate cell points intersect Lokoja LGA, six intersect the provisional local analysis extent, one intersects the September 2018 flood footprint, and five intersect one of the two target HydroBASINS polygons. The Group A cells intersect target basin 1060909890; Group B cells intersect target basin 1060909900; neither Group C cell intersects any polygon in the exported 297-feature network.
+
+The nearest named Copernicus hydrography polygon for cells 4, 11 and 18 is labelled Niger; for cells 14, 19 and 25 it is labelled Benue; and for cell 32 it is labelled Niger. These are nearest-feature relationships only. Cell 11 intersects the named Niger polygon. No other candidate point intersects a named river polygon. The Copernicus hydrography line layer contains 22 features whose source names are all recorded as Unknown.
+
+These spatial tests do not establish that a GloFAS grid value is a river-specific observation, do not prove that the target HydroBASINS branches are respectively the Niger and Benue, and do not establish downstream connectivity for Group C. GloFAS values are modelled grid estimates, not in-situ gauge measurements. The two Group C cells are outside the coverage of the exported 297-feature candidate network at their point locations; this is a coverage/intersection result, not proof that they are outside the wider drainage system.
+
+The Copernicus EMSR314_02 AOI remains a provisional, event-derived local analysis extent, not a definitive or permanent floodplain boundary. The 2018 flood footprint is event-specific evidence and is not a complete flood catalogue.
+
+Retained spatial verification outputs:
+- `data/processed/spatial_verification/lokoja_spatial_verification_inventory.csv`
+- `data/processed/spatial_verification/lokoja_spatial_verification_summary.txt`
+- `data/figures/lokoja_regional_hydrological_study_area.png`
+- `data/figures/lokoja_local_study_area_detail.png`
+
+The reproducible workflow is `scripts/complete_lokoja_spatial_verification.py`. The local map display window (6.70–7.05°E, 7.65–8.05°N) is a cartographic extent only; it is not a replacement or modification of the local analysis geometry.
 
 ## 7. Scientific terminology
 
