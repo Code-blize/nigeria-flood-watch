@@ -4,6 +4,7 @@ from pathlib import Path
 import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 
 from shapely.geometry import Point, box
 
@@ -307,6 +308,52 @@ for group_name, (color, marker) in group_styles.items():
         zorder=6
     )
 
+# Mark the local map window on the regional overview.
+ax.add_patch(
+    Rectangle(
+        (west if "west" in globals() else LOCAL_BOUNDS[0],
+         LOCAL_BOUNDS[1]),
+        LOCAL_BOUNDS[2] - LOCAL_BOUNDS[0],
+        LOCAL_BOUNDS[3] - LOCAL_BOUNDS[1],
+        fill=False,
+        edgecolor="blue",
+        linewidth=1.2,
+        linestyle=":",
+        label="Local map extent",
+        zorder=7
+    )
+)
+
+# Add a Lokoja inset so the local study area remains legible
+# at the regional network scale.
+inset = fig.add_axes([0.66, 0.12, 0.27, 0.27])
+basins_local_inset = gpd.clip(
+    basins,
+    gpd.GeoDataFrame(
+        geometry=[box(*LOCAL_BOUNDS)],
+        crs="EPSG:4326"
+    )
+)
+basins_local_inset.boundary.plot(
+    ax=inset, color="lightgrey", linewidth=0.35
+)
+lga.boundary.plot(ax=inset, color="black", linewidth=1.0)
+aoi.boundary.plot(
+    ax=inset, color="blue", linewidth=0.9, linestyle="--"
+)
+for group_name, (color, marker) in group_styles.items():
+    cells[cells["group"] == group_name].plot(
+        ax=inset, color=color, marker=marker,
+        markersize=24, edgecolor="black", linewidth=0.4
+    )
+inset.set_xlim(LOCAL_BOUNDS[0], LOCAL_BOUNDS[2])
+inset.set_ylim(LOCAL_BOUNDS[1], LOCAL_BOUNDS[3])
+inset.set_title("Lokoja local detail", fontsize=8)
+inset.set_xticks([])
+inset.set_yticks([])
+inset.set_facecolor("white")
+inset.patch.set_alpha(0.95)
+
 # Label the LGA near its centroid.
 lga_centroid = lga.to_crs(METRIC_CRS).geometry.union_all().centroid
 lga_centroid_wgs84 = gpd.GeoSeries(
@@ -335,7 +382,14 @@ ax.grid(alpha=0.25, linestyle="--")
 ax.legend(loc="best", fontsize=8)
 ax.set_aspect("equal", adjustable="datalim")
 
-fig.tight_layout()
+fig.text(
+    0.01, 0.01,
+    "Sources: HydroBASINS v1; UN SALB Nigeria; Copernicus EMSR314_02. "
+    "Candidate GloFAS points are modelled grid locations. "
+    "Display CRS: EPSG:4326.",
+    fontsize=7, color="dimgray"
+)
+fig.tight_layout(rect=[0, 0.035, 1, 1])
 fig.savefig(REGIONAL_MAP, dpi=300, bbox_inches="tight")
 plt.close(fig)
 
@@ -458,11 +512,21 @@ for group_name, (color, marker) in group_styles.items():
         zorder=8
     )
 
+    label_offsets = {
+        "cell_4": (7, 9),
+        "cell_11": (7, 9),
+        "cell_18": (8, 7),
+        "cell_14": (7, 8),
+        "cell_19": (7, 8),
+        "cell_25": (8, 7),
+        "cell_32": (8, 7),
+    }
+
     for _, row in subset.iterrows():
         ax.annotate(
             row["cell"].replace("cell_", ""),
             xy=(row.geometry.x, row.geometry.y),
-            xytext=(6, 6),
+            xytext=label_offsets[row["cell"]],
             textcoords="offset points",
             fontsize=9,
             fontweight="bold",
@@ -485,7 +549,14 @@ ax.grid(alpha=0.3, linestyle="--")
 ax.legend(loc="best", fontsize=8)
 ax.set_aspect("equal", adjustable="box")
 
-fig.tight_layout()
+fig.text(
+    0.01, 0.01,
+    "Sources: Copernicus EMSR314_02 hydrography and 2018 flood delineation; "
+    "UN SALB Nigeria; HydroBASINS v1; GloFAS historical grid locations. "
+    "Display CRS: EPSG:4326. Distances in inventory: EPSG:32632.",
+    fontsize=7, color="dimgray"
+)
+fig.tight_layout(rect=[0, 0.04, 1, 1])
 fig.savefig(LOCAL_MAP, dpi=300, bbox_inches="tight")
 plt.close(fig)
 
