@@ -1,1 +1,4 @@
-
+# Large raster datasets
+data/raw/**/*.tif
+data/raw/**/*.tiff
+data/raw/
