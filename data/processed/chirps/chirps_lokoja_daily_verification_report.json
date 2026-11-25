@@ -1,0 +1,44 @@
+{
+  "source_file": "data/raw/chirps/chirps_v3_lokoja_2018_09_daily.csv",
+  "standardized_file": "data/processed/chirps/chirps_lokoja_daily_area_average_standardized.csv",
+  "raw_series": {
+    "name": "raw",
+    "record_count": 30,
+    "invalid_date_count": 0,
+    "duplicate_dates": [],
+    "missing_dates": [],
+    "invalid_rainfall_count": 0,
+    "negative_rainfall_count": 0,
+    "summary_mm_per_day": {
+      "count": 30,
+      "min": 0.7104610857871299,
+      "max": 28.22497877209944,
+      "mean": 7.360959295853787,
+      "sum": 220.8287788756136,
+      "standard_deviation_sample": 7.575470389630997
+    }
+  },
+  "standardized_series": {
+    "name": "standardized",
+    "record_count": 30,
+    "invalid_date_count": 0,
+    "duplicate_dates": [],
+    "missing_dates": [],
+    "invalid_rainfall_count": 0,
+    "negative_rainfall_count": 0,
+    "summary_mm_per_day": {
+      "count": 30,
+      "min": 0.7104610857871299,
+      "max": 28.22497877209944,
+      "mean": 7.360959295853787,
+      "sum": 220.8287788756136,
+      "standard_deviation_sample": 7.575470389630997
+    }
+  },
+  "source_comparison": {
+    "matched_date_and_value_pairs": 30,
+    "mismatch_count": 0,
+    "mismatches": []
+  },
+  "verification_passed": true
+}
