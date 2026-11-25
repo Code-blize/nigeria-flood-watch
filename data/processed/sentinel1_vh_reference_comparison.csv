@@ -1,0 +1,5 @@
+threshold_db,valid_reference_pixels,candidate_pixels,candidate_area_km2,candidate_pixels_inside_reference,candidate_area_inside_reference_km2,candidate_share_inside_reference_percent,reference_covered_by_candidate_percent,candidate_pixels_outside_reference,reference_pixels_not_candidate,interpretation_note
+-20,359910,1699279,169.9279,259614,25.9614,15.2779,72.133,1439665,100296,Exploratory overlap only; outside-reference pixels are not automatically false detections.
+-18,359910,2438717,243.8717,297459,29.7459,12.1974,82.6482,2141258,62451,Exploratory overlap only; outside-reference pixels are not automatically false detections.
+-16,359910,4848918,484.8918,329375,32.9375,6.7928,91.5159,4519543,30535,Exploratory overlap only; outside-reference pixels are not automatically false detections.
+-14,359910,9992776,999.2776,351398,35.1398,3.5165,97.635,9641378,8512,Exploratory overlap only; outside-reference pixels are not automatically false detections.
