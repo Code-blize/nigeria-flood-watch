@@ -1,0 +1,38 @@
+{
+  "input_daily_file": "data/processed/chirps/chirps_lokoja_daily_area_average_standardized.csv",
+  "input_accumulation_file": "data/processed/chirps/chirps_lokoja_area_average_accumulations.csv",
+  "units": {
+    "daily_input": "mm/day",
+    "accumulation_products": "mm accumulated over each window"
+  },
+  "spatial_alignment": {
+    "status": "not_applicable",
+    "reason": "These products are area-average time series, not rasters. Raster alignment requires daily accumulation raster products."
+  },
+  "checks": {
+    "dates_match_daily_series": true,
+    "1_day_product": {
+      "status": "missing_column",
+      "column_expected": "rainfall_1d_mm"
+    },
+    "3_day_product": {
+      "status": "missing_column",
+      "column_expected": "rainfall_3d_mm"
+    },
+    "7_day_product": {
+      "status": "missing_column",
+      "column_expected": "rainfall_7d_mm"
+    },
+    "14_day_product": {
+      "status": "missing_column",
+      "column_expected": "rainfall_14d_mm"
+    }
+  },
+  "issues": [
+    "Missing accumulation column: rainfall_1d_mm",
+    "Missing accumulation column: rainfall_3d_mm",
+    "Missing accumulation column: rainfall_7d_mm",
+    "Missing accumulation column: rainfall_14d_mm"
+  ],
+  "overall_status": "fail"
+}
