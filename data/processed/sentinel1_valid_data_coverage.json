@@ -1,0 +1,24 @@
+{
+  "source_file": "data/processed/sentinel1_lokoja_2018_sample_median3.tif",
+  "crs": "EPSG:32632",
+  "width_pixels": 4005,
+  "height_pixels": 4004,
+  "band_count": 2,
+  "bands": {
+    "VV": {
+      "band_number": 1,
+      "valid_pixels": 15863761,
+      "missing_pixels": 172259,
+      "valid_percent": 98.9258,
+      "missing_percent": 1.0742
+    },
+    "VH": {
+      "band_number": 2,
+      "valid_pixels": 15863761,
+      "missing_pixels": 172259,
+      "valid_percent": 98.9258,
+      "missing_percent": 1.0742
+    }
+  },
+  "vv_vh_valid_masks_identical": true
+}
