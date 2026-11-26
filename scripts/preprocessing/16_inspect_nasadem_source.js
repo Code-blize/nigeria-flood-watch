@@ -169,7 +169,130 @@ print('Study area geometry:', sampleAOI);
 
 print(
   'Study area area (square kilometres):',
-  sampleAOI.area().divide(1e6)
+  sampleAOI.area(1).divide(1e6)
 );
 
 print('========== INSPECTION COMPLETE ==========');
+
+// --------------------------------------------------
+// 11. INVESTIGATE NEGATIVE ELEVATION PIXELS
+// --------------------------------------------------
+
+var negativeMask = elevation.lt(0).selfMask();
+
+var negativeElevation = elevation.updateMask(negativeMask);
+
+var negativeCount = negativeElevation.reduceRegion({
+  reducer: ee.Reducer.count(),
+  geometry: sampleAOI,
+  scale: 30,
+  maxPixels: 1e9,
+  tileScale: 4
+});
+
+var negativeStatistics = negativeElevation.reduceRegion({
+  reducer: ee.Reducer.minMax(),
+  geometry: sampleAOI,
+  scale: 30,
+  maxPixels: 1e9,
+  tileScale: 4
+});
+
+print('Negative elevation pixel count:', negativeCount);
+
+print('Negative elevation statistics:', negativeStatistics);
+
+// Display negative elevation locations.
+Map.addLayer(
+  negativeElevation,
+  {
+    min: -20,
+    max: 0,
+    palette: ['red', 'yellow']
+  },
+  'Negative elevation pixels'
+);
+
+// --------------------------------------------------
+// 12. INSPECT SOURCE-DATA CLASS COUNTS
+// --------------------------------------------------
+
+var sourceHistogramDictionary = ee.Dictionary(
+  sourceHistogram.get('num')
+);
+
+print(
+  'Source-data class codes:',
+  sourceHistogramDictionary.keys()
+);
+
+print(
+  'Source-data class pixel counts:',
+  sourceHistogramDictionary.values()
+);
+
+// --------------------------------------------------
+// 13. INSPECT WATER PIXELS
+// --------------------------------------------------
+
+var waterHistogramDictionary = ee.Dictionary(
+  waterHistogram.get('swb')
+);
+
+print(
+  'Water-body class codes:',
+  waterHistogramDictionary.keys()
+);
+
+print(
+  'Water-body pixel counts:',
+  waterHistogramDictionary.values()
+);
+
+// --------------------------------------------------
+// 14. CHECK SOURCE CLASSES OF NEGATIVE PIXELS
+// --------------------------------------------------
+
+var negativeSourceDistribution = sourceIndex
+  .updateMask(negativeMask)
+  .reduceRegion({
+    reducer: ee.Reducer.frequencyHistogram(),
+    geometry: sampleAOI,
+    scale: 30,
+    maxPixels: 1e9,
+    tileScale: 4
+  });
+
+print(
+  'Source classes contributing to negative elevations:',
+  negativeSourceDistribution
+);
+// --------------------------------------------------
+// 15. LOCATE NEGATIVE ELEVATION PIXELS
+// --------------------------------------------------
+
+var negativePixelSamples = nasadem
+  .select(['elevation', 'num', 'swb'])
+  .sample({
+    region: sampleAOI,
+    scale: 30,
+    geometries: true,
+    tileScale: 4
+  })
+  .filter(ee.Filter.lt('elevation', 0));
+
+print(
+  'Negative elevation pixel details:',
+  negativePixelSamples
+);
+
+var negativeList = negativePixelSamples.toList(2);
+
+var negative1 = ee.Feature(negativeList.get(0));
+var negative2 = ee.Feature(negativeList.get(1));
+
+print('Negative pixel 1 properties', negative1.toDictionary());
+print('Negative pixel 1 coordinates', negative1.geometry().coordinates());
+
+print('Negative pixel 2 properties', negative2.toDictionary());
+print('Negative pixel 2 coordinates', negative2.geometry().coordinates());
