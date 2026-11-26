@@ -296,3 +296,4 @@ print('Negative pixel 1 coordinates', negative1.geometry().coordinates());
 
 print('Negative pixel 2 properties', negative2.toDictionary());
 print('Negative pixel 2 coordinates', negative2.geometry().coordinates());
+
