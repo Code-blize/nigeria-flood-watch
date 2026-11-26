@@ -349,15 +349,16 @@ Export.image.toDrive({
 // --------------------------------------------------
 
 // Project elevation to a metre-based CRS before terrain calculations.
+// Clip to the study area before reprojection to reduce processing load.
 var elevationUTM = nasadem
   .select('elevation')
+  .clip(sampleAOI)
   .resample('bilinear')
   .reproject({
     crs: 'EPSG:32632',
     scale: 30
   });
 
-// Calculate terrain derivatives.
 var terrain = ee.Terrain.products(elevationUTM);
 
 var slope = terrain.select('slope').clip(sampleAOI);
@@ -422,21 +423,22 @@ var terrainStats = standardizedElevation.rename('elevation_m')
 
 print('Terrain validation statistics', terrainStats);
 
-// Display layers for visual inspection.
-Map.addLayer(standardizedElevation, {
-  min: 0,
-  max: 550,
-  palette: ['0015a8', '00a6ca', 'a6d96a', 'ffffbf', 'a6611a']
-}, 'Standardized elevation');
+// Display previews at 90 m to reduce map-tile memory use.
+// Keep the original 30 m slope/aspect images for export and statistics.
+Map.addLayer(
+  standardizedElevation.reproject({crs: 'EPSG:32632', scale: 90}),
+  {min: 0, max: 550},
+  'Elevation preview (90 m)'
+);
 
-Map.addLayer(slope, {
-  min: 0,
-  max: 45,
-  palette: ['ffffff', 'fdae61', 'd7191c']
-}, 'Slope (degrees)');
+Map.addLayer(
+  slope.reproject({crs: 'EPSG:32632', scale: 90}),
+  {min: 0, max: 45},
+  'Slope preview (90 m)'
+);
 
-Map.addLayer(aspect, {
-  min: 0,
-  max: 360,
-  palette: ['d73027', 'fee08b', '1a9850', '4575b4', 'd73027']
-}, 'Aspect (degrees)');
+Map.addLayer(
+  aspect.reproject({crs: 'EPSG:32632', scale: 90}),
+  {min: 0, max: 360},
+  'Aspect preview (90 m)'
+);
