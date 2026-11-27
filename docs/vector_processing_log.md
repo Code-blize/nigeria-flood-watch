@@ -82,7 +82,7 @@ corrections or reruns below rather than silently replacing this record.
 Fill these in from the project files or geoprocessing history when
 available:
 
--   Processing date: `[YYYY-MM-DD]`
+-   Processing date: `[2026-11-27]`
 -   ArcGIS Pro version: `[version]`
 -   Exact source filenames and paths: `[record paths]`
 -   Exact output folder path: `[record path]`
