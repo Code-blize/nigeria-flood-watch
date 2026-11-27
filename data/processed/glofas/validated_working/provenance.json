@@ -1,0 +1,51 @@
+{
+  "workflow": "GloFAS preparation \u2014 validated working outputs",
+  "raw_files_modified": false,
+  "grib_metadata": {
+    "short_name": "avg_dis",
+    "variable_name": "Time-mean discharge from rivers or streams",
+    "units": "m**3 s**-1",
+    "reference_date": "20180915",
+    "reference_time": "0",
+    "validity_date": "20180916",
+    "validity_time": "0",
+    "step_type": "avg",
+    "start_step": 0,
+    "end_step": 24,
+    "grid_type": "regular_ll",
+    "grid_resolution_degrees": "0.05 x 0.05"
+  },
+  "source_files": [
+    {
+      "path": "data/raw/glofas/extracted/data.grib",
+      "sha256": "41d51c36a459784bc217b22301cb60aab6fbd73e59cd1ed8d360c871546e9acd"
+    },
+    {
+      "path": "data/raw/lokoja_lga_extracted/lokoja_lga_utm32n.shp",
+      "sha256": "c42f20ce32e7ecd90196b409560beaa887b723307880b0d6519192029623a095"
+    },
+    {
+      "path": "data/raw/EMSR314_02_extracted/EMSR314_02LOKOJA_DEL_v1_hydrography_l.shp",
+      "sha256": "06172a1006aeb9bbd0492e8c133cf4fb092312c19301a5e3bb2b9783be0674ff"
+    },
+    {
+      "path": "data/processed/glofas/glofas_candidate_cells_documented.csv",
+      "sha256": "f5d45d1fe3fad0728badbd586094d92e3b984043a05868f50ad437d80318c5af"
+    },
+    {
+      "path": "data/processed/glofas/glofas_spatial_alignment.csv",
+      "sha256": "b1f78e55b7ee1cb619f5090fbb652bb32ad295f4ce5405222043051f2480d57a"
+    }
+  ],
+  "outputs": [
+    "grid_values_standardized.csv",
+    "candidate_cells_standardized.csv",
+    "spatial_alignment_standardized.csv"
+  ],
+  "validation": {
+    "grid_point_count": 42,
+    "candidate_cell_count": 10,
+    "candidate_ids_and_coordinates_match_grib": true,
+    "river_network_association": "Not confirmed"
+  }
+}
