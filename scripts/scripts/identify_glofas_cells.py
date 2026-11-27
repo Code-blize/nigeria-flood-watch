@@ -12,7 +12,7 @@ from eccodes import (
 GRIB_PATH = Path("data/raw/glofas/extracted/data.grib")
 
 # Change this to the actual path of your AOI shapefile in Codespaces.
-AOI_PATH = Path("data/processed/vector/lokoja_lga_utm32n.shp")
+AOI_PATH = Path("/workspaces/nigeria-flood-watch/data/raw/lokoja_lga_extracted/lokoja_lga_utm32n.shp")
 
 OUTPUT_PATH = Path("data/processed/glofas/glofas_candidate_cells.csv")
 
